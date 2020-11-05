@@ -21,20 +21,20 @@ def nice_dict_print(d: dict, str_length: int = 80):
     Nice print a dictionary
     """
     k = d.keys()
-    max_lenght = get_longest_element_length(k)
+    max_length = get_longest_element_length(k)
     for _ in k:
-        dif = max_lenght - len(_)
+        dif = max_length - len(_)
         value_len = len(d[_])
         if value_len <= str_length:
             spaces = " " * dif
             print(f"{Fore.CYAN}{spaces}{_}{Style.RESET_ALL}", d[_])
         else:
             spaces = " " * dif
-            new_str = f"{(max_lenght + 1) * ' '}"
+            new_str = f"{(max_length + 1) * ' '}"
             print(f"{Fore.CYAN}{spaces}{_}{Style.RESET_ALL}")
             for index, some in enumerate(d[_]):
                 if index % (str_length - 1) == 0 and index != 0:
-                    new_str +=  "\n" + (max_lenght + 1) * " " + some
+                    new_str +=  "\n" + (max_length + 1) * " " + some
                 else:
                     new_str += some
             print(new_str)
