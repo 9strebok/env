@@ -2,7 +2,9 @@
 """Print environment variables"""
 
 import os
+from argparse import ArgumentParser
 from colorama import Fore, Style
+
 
 
 def get_longest_element_length(l: list):
@@ -38,11 +40,23 @@ def nice_dict_print(d: dict, str_length: int = 80):
             print(new_str)
 
 
-def main():
+def parse_args(desc: str):
+    """ Parse arguments """
+    parser = ArgumentParser()
+    parser.add_argument(
+            "-l", "--length",
+            help = "Value length",
+            type = int,
+            default = 80
+    )
+    return parser.parse_args()
 
+
+def main():
     """Main function"""
+    arguments = parse_args(" ")
     env = os.environ
-    nice_dict_print(env)
+    nice_dict_print(env, arguments.length)
 
 
 if __name__ == "__main__":
