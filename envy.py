@@ -6,7 +6,6 @@ from argparse import ArgumentParser
 from colorama import Fore, Style
 
 
-
 def get_longest_element_length(l: list):
     """
     get_longest_element_length (l: list[string]) -> int
@@ -20,14 +19,15 @@ def nice_dict_print(d: dict, str_length: int = 80):
     nice_dict_print(d: dict) -> None
     Nice print a dictionary
     """
-    k = d.keys()
+    k = d.keys() # Keys
     max_length = get_longest_element_length(k)
     for _ in k:
         dif = max_length - len(_)
-        value_len = len(d[_])
+        v = d[_] # _ value
+        value_len = len(v)
         if value_len <= str_length:
             spaces = " " * dif
-            print(f"{Fore.CYAN}{spaces}{_}{Style.RESET_ALL}", d[_])
+            print(f"{Fore.CYAN}{spaces}{_}{Style.RESET_ALL}", v)
         else:
             spaces = " " * dif
             new_str = f"{(max_length + 1) * ' '}"
